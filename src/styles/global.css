@@ -19,8 +19,9 @@
 }
 
 html {
-  scroll-behavior: auto;
-  overflow: hidden;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 body {
@@ -31,6 +32,8 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
 }
 
 /* Glassmorphism Effect */
