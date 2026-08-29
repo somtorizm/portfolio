@@ -1,1 +1,39 @@
+# ============================================================
+# app-ads.txt — IAB Authorized Digital Sellers for Mobile Apps
+#
+# THIS FILE IS PER-DOMAIN, NOT PER-APP. It must contain the union of
+# every ad network used by every app whose Play/App Store listing points
+# at this domain. Adding an app means appending its networks' lines —
+# never replacing the file, which would de-authorise the others.
+#
+# A missing line is not an error anywhere visible: the network's bids are
+# simply dropped as unauthorised inventory, which looks identical to low
+# demand in the reporting.
+#
+# Format: <ad_system_domain>, <seller_account_id>, <relationship>, <tag_id>
+# ============================================================
+
+# ------------------------------------------------------------
+# Google AdMob — publisher pub-4693097441516448
+# Monetization account for HD Status (com.vectorinc.hdstatus).
+# ------------------------------------------------------------
 google.com, pub-4693097441516448, DIRECT, f08c47fec0942fa0
+
+# ------------------------------------------------------------
+# Liftoff Monetize (still published under the Vungle name)
+# Line dictated verbatim by the Liftoff publisher dashboard, which
+# hard-blocks app creation until it resolves on this domain.
+# ------------------------------------------------------------
+vungle.com, 6a929371c2b0109ea671aa98, DIRECT, c107d686becd2d77
+
+# ------------------------------------------------------------
+# Pending — each needs its own line before that network can serve.
+# Take the exact line from the network's own dashboard rather than
+# guessing the id; several of them expose more than one identifier and
+# only one is the seller account id.
+#
+#   Meta Audience Network   (app 2070368333590432)
+#   Pangle                  (not yet signed up)
+#   Mintegral               (not yet signed up)
+#   Unity Ads               (uses the ORGANIZATION id, not the game id)
+# ------------------------------------------------------------
