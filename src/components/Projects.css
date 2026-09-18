@@ -155,6 +155,16 @@
   display: block;
 }
 
+.project-image-container.portrait-preview {
+  aspect-ratio: 9 / 16;
+  max-width: 320px;
+}
+
+.project-image-container.portrait-preview img {
+  object-fit: cover;
+  object-position: center;
+}
+
 /* Responsive */
 @media (max-width: 968px) {
   .project-content {

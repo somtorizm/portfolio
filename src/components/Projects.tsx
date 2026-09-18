@@ -1,10 +1,28 @@
 import { motion } from 'framer-motion';
 import { FiGithub, FiExternalLink, FiSmartphone } from 'react-icons/fi';
-import { SiKotlin, SiAndroid, SiTensorflow } from 'react-icons/si';
+import { SiKotlin, SiAndroid, SiTensorflow, SiSwift, SiApple, SiGoogleplay } from 'react-icons/si';
 import './Projects.css';
 
 const Projects = () => {
   const projects = [
+    {
+      title: 'HD Status',
+      description: 'Shipped HD Status: No Quality Loss, a Photo & Video app on Google Play and the App Store that helps people post WhatsApp Status photos and videos without WhatsApp’s aggressive compression. Media is sent to the user’s own WhatsApp chat first, then forwarded to Status so quality is preserved. Trim, crop, music, and quality-comparison tools handle Status framing, with Premium removing ads and watermarks and raising send limits.',
+      image: '/hdstatus-play.png',
+      imageFit: 'portrait',
+      technologies: [
+        { icon: <SiKotlin />, name: 'Kotlin' },
+        { icon: <SiAndroid />, name: 'Android' },
+        { icon: <SiSwift />, name: 'Swift' },
+      ],
+      stats: { period: '2025-Present', location: 'Remote', focus: 'Photo & Video' },
+      links: {
+        github: 'https://github.com/ezinwavictor',
+        demo: 'https://play.google.com/store/apps/details?id=com.vectorinc.hdstatus',
+        demoLabel: 'View on Play Store',
+        appStore: 'https://apps.apple.com/us/app/hd-status-no-quality-loss/id6802051651',
+      },
+    },
     {
       title: 'Moniepoint POS',
       description: 'Building and improving Android POS terminals used nationwide for secure payments and agent banking. SDK integration for terminal communication, device management, and transaction security. Enhanced transaction speed and reliability across thousands of active terminals.',
@@ -73,7 +91,7 @@ const Projects = () => {
           viewport={{ once: true }}
         >
           <h2>Professional Experience</h2>
-          <p>Android solutions powering payments, IoT, and AI</p>
+          <p>Android and iOS solutions powering payments, IoT, and consumer apps</p>
         </motion.div>
 
         <div className="projects-grid">
@@ -136,6 +154,18 @@ const Projects = () => {
                     >
                       <FiGithub /> GitHub
                     </motion.a>
+                    {project.links.appStore && (
+                      <motion.a
+                        href={project.links.appStore}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-glass"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <SiApple /> App Store
+                      </motion.a>
+                    )}
                     <motion.a
                       href={project.links.demo}
                       target="_blank"
@@ -144,14 +174,15 @@ const Projects = () => {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >
-                      <FiExternalLink /> View Project
+                      {project.links.demo.includes('play.google.com') ? <SiGoogleplay /> : <FiExternalLink />}{' '}
+                      {project.links.demoLabel || 'View Project'}
                     </motion.a>
                   </div>
                 </div>
 
                 <div className="project-mockup">
                   <motion.div
-                    className="project-image-container"
+                    className={`project-image-container${project.imageFit === 'portrait' ? ' portrait-preview' : ''}`}
                     whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.3 }}
                   >
