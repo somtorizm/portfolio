@@ -156,11 +156,13 @@
 }
 
 .project-image-container.portrait-preview {
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 9 / 16;
+  max-width: 320px;
 }
 
 .project-image-container.portrait-preview img {
-  object-position: center 18%;
+  object-fit: cover;
+  object-position: center;
 }
 
 /* Responsive */

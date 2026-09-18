@@ -8,7 +8,7 @@ const Projects = () => {
     {
       title: 'HD Status',
       description: 'Shipped HD Status: No Quality Loss, a Photo & Video app on Google Play and the App Store that helps people post WhatsApp Status photos and videos without WhatsApp’s aggressive compression. Media is sent to the user’s own WhatsApp chat first, then forwarded to Status so quality is preserved. Trim, crop, music, and quality-comparison tools handle Status framing, with Premium removing ads and watermarks and raising send limits.',
-      image: '/hdstatus.png',
+      image: '/hdstatus-play.png',
       imageFit: 'portrait',
       technologies: [
         { icon: <SiKotlin />, name: 'Kotlin' },
