@@ -9,6 +9,9 @@ import {
   SiDocker,
   SiGit,
   SiAndroidstudio,
+  SiSwift,
+  SiApple,
+  SiXcode,
 } from 'react-icons/si';
 import './Skills.css';
 
@@ -19,6 +22,7 @@ const Skills = () => {
       skills: [
         { name: 'Kotlin', icon: <SiKotlin />, level: 95 },
         { name: 'Java', icon: <SiJavascript />, level: 90 },
+        { name: 'Swift', icon: <SiSwift />, level: 85 },
         { name: 'C++', icon: <SiTypescript />, level: 80 },
         { name: 'Python', icon: <SiReact />, level: 75 },
       ],
@@ -30,6 +34,15 @@ const Skills = () => {
         { name: 'Android SDK', icon: <SiAndroidstudio />, level: 95 },
         { name: 'WebRTC', icon: <SiReact />, level: 85 },
         { name: 'TensorFlow Lite', icon: <SiReact />, level: 80 },
+      ],
+    },
+    {
+      title: 'iOS',
+      skills: [
+        { name: 'SwiftUI', icon: <SiSwift />, level: 85 },
+        { name: 'iOS SDK', icon: <SiApple />, level: 85 },
+        { name: 'Xcode', icon: <SiXcode />, level: 88 },
+        { name: 'AVFoundation', icon: <SiApple />, level: 80 },
       ],
     },
     {
@@ -56,6 +69,8 @@ const Skills = () => {
     'Android Architecture (MVVM, MVI, Clean Architecture)',
     'SDK Development & Integration',
     'Payment Systems & POS Terminals',
+    'App Store Shipping & iOS Releases',
+    'iOS Photo & Video Pipelines',
     'WebRTC & Real-time Communication',
     'IoT Device Integration',
     'AI/ML (TensorFlow Lite, Audio Processing)',

@@ -1,10 +1,25 @@
 import { motion } from 'framer-motion';
 import { FiGithub, FiExternalLink, FiSmartphone } from 'react-icons/fi';
-import { SiKotlin, SiAndroid, SiTensorflow } from 'react-icons/si';
+import { SiKotlin, SiAndroid, SiTensorflow, SiSwift, SiApple } from 'react-icons/si';
 import './Projects.css';
 
 const Projects = () => {
   const projects = [
+    {
+      title: 'HD Status',
+      description: 'Shipped HD Status: No Quality Loss, an App Store Photo & Video app that helps people post WhatsApp Status photos and videos without WhatsApp’s aggressive compression. Media is sent to the user’s own WhatsApp chat first, then forwarded to Status so quality is preserved. Trim, crop, and quality-comparison tools handle Status framing, with Premium removing ads and watermarks and raising send limits.',
+      image: '/hdstatus.png',
+      technologies: [
+        { icon: <SiSwift />, name: 'Swift' },
+        { icon: <SiApple />, name: 'iOS' },
+      ],
+      stats: { period: '2025-Present', location: 'Remote', focus: 'App Store' },
+      links: {
+        github: 'https://github.com/ezinwavictor',
+        demo: 'https://apps.apple.com/us/app/hd-status-no-quality-loss/id6802051651',
+        demoLabel: 'View on App Store',
+      },
+    },
     {
       title: 'Moniepoint POS',
       description: 'Building and improving Android POS terminals used nationwide for secure payments and agent banking. SDK integration for terminal communication, device management, and transaction security. Enhanced transaction speed and reliability across thousands of active terminals.',
@@ -73,7 +88,7 @@ const Projects = () => {
           viewport={{ once: true }}
         >
           <h2>Professional Experience</h2>
-          <p>Android solutions powering payments, IoT, and AI</p>
+          <p>Android and iOS solutions powering payments, IoT, and consumer apps</p>
         </motion.div>
 
         <div className="projects-grid">
@@ -144,7 +159,7 @@ const Projects = () => {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >
-                      <FiExternalLink /> View Project
+                      <FiExternalLink /> {project.links.demoLabel || 'View Project'}
                     </motion.a>
                   </div>
                 </div>
