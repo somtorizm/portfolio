@@ -69,7 +69,7 @@ const Skills = () => {
     'Android Architecture (MVVM, MVI, Clean Architecture)',
     'SDK Development & Integration',
     'Payment Systems & POS Terminals',
-    'App Store Shipping & iOS Releases',
+    'Play Store & App Store Shipping',
     'iOS Photo & Video Pipelines',
     'WebRTC & Real-time Communication',
     'IoT Device Integration',
