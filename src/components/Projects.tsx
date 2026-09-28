@@ -1,10 +1,21 @@
 import { motion } from 'framer-motion';
 import { FiGithub, FiExternalLink, FiSmartphone } from 'react-icons/fi';
-import { SiKotlin, SiAndroid, SiTensorflow, SiSwift, SiApple, SiGoogleplay } from 'react-icons/si';
+import {
+  SiKotlin, SiAndroid, SiTensorflow, SiSwift, SiApple, SiGoogleplay, SiFirebase, SiJavascript, SiPython, SiFfmpeg, SiYoutube,
+} from 'react-icons/si';
 import './Projects.css';
 
 const Projects = () => {
-  const projects = [
+  const projects: {
+    title: string;
+    description: string;
+    image?: string;
+    video?: string;
+    imageFit?: 'portrait';
+    technologies: { icon: React.ReactNode; name: string }[];
+    stats: { period: string; location: string; terminals?: string; focus?: string };
+    links: { github?: string; demo: string; demoLabel?: string; appStore?: string };
+  }[] = [
     {
       title: 'HD Status',
       description: 'Shipped HD Status: No Quality Loss, a Photo & Video app on Google Play and the App Store that helps people post WhatsApp Status photos and videos without WhatsApp’s aggressive compression. Media is sent to the user’s own WhatsApp chat first, then forwarded to Status so quality is preserved. Trim, crop, music, and quality-comparison tools handle Status framing, with Premium removing ads and watermarks and raising send limits.',
@@ -21,6 +32,50 @@ const Projects = () => {
         demo: 'https://play.google.com/store/apps/details?id=com.vectorinc.hdstatus',
         demoLabel: 'View on Play Store',
         appStore: 'https://apps.apple.com/us/app/hd-status-no-quality-loss/id6802051651',
+      },
+    },
+    {
+      title: 'Unknot: Arrow Puzzle',
+      description: 'An arrow-escape puzzle game I built solo on the Unpile engine: tap an arrow and it slides out the way it points, as long as nothing is in its path. Native Jetpack Compose on Android and SwiftUI on iOS, with identical boards on both kept honest by shared test vectors, and a generator that constructs every board to be solvable. 50 arrow themes, daily streaks, weekly leagues, "beat my time" friend links, and 21 languages. Live on Google Play, with iOS in App Store review.',
+      video: '/unknot-ad.mp4',
+      technologies: [
+        { icon: <SiKotlin />, name: 'Compose' },
+        { icon: <SiSwift />, name: 'SwiftUI' },
+        { icon: <SiFirebase />, name: 'Firebase' },
+      ],
+      stats: { period: '2026', location: 'Indie', focus: 'Android + iOS' },
+      links: {
+        demo: 'https://play.google.com/store/apps/details?id=com.vectorinc.unknot',
+        demoLabel: 'View on Play Store',
+      },
+    },
+    {
+      title: 'Unknot Ad Creatives',
+      description: 'The app-install ads for Unknot, rendered entirely in code rather than edited by hand. The arrows are drawn exactly as the game draws them, every scripted tap is checked against the real puzzle rule before it renders, and the music and sound effects are synthesized, with the plucks ported from the game\'s own sound code. One pipeline outputs every placement (9:16, 1:1, 4:5 and 16:9) for the Google Ads soft launch they now run in. Shown here: the "IQ test" cut.',
+      video: '/unknot-iq.mp4',
+      technologies: [
+        { icon: <SiJavascript />, name: 'Canvas' },
+        { icon: <SiPython />, name: 'Audio synth' },
+        { icon: <SiFfmpeg />, name: 'FFmpeg' },
+      ],
+      stats: { period: '2026', location: 'Indie', focus: 'Growth' },
+      links: {
+        demo: 'https://www.youtube.com/shorts/MqE8C-KMGPQ',
+        demoLabel: 'Watch on YouTube',
+      },
+    },
+    {
+      title: 'Unpile Puzzle',
+      description: 'A cozy puzzle game I designed and built solo, native on both platforms: SwiftUI on iOS and Jetpack Compose on Android, sharing one rules engine kept identical by cross-platform test vectors. Procedural level generator, a daily puzzle with shareable "beat my time" challenge links, live leagues on Firebase, subscriptions with StoreKit 2 and Play Billing, AdMob, and 20 languages.',
+      image: '/unpile.webp',
+      technologies: [
+        { icon: <SiSwift />, name: 'SwiftUI' },
+        { icon: <SiKotlin />, name: 'Compose' },
+        { icon: <SiFirebase />, name: 'Firebase' },
+      ],
+      stats: { period: '2026', location: 'Indie', focus: 'iOS + Android' },
+      links: {
+        demo: 'https://unpile-mobile-game.web.app',
       },
     },
     {
@@ -91,7 +146,7 @@ const Projects = () => {
           viewport={{ once: true }}
         >
           <h2>Professional Experience</h2>
-          <p>Android and iOS solutions powering payments, IoT, and consumer apps</p>
+          <p>Android and iOS solutions powering payments, IoT, consumer apps, and games</p>
         </motion.div>
 
         <div className="projects-grid">
@@ -144,16 +199,18 @@ const Projects = () => {
                   </div>
 
                   <div className="project-links">
-                    <motion.a
-                      href={project.links.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn btn-glass"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <FiGithub /> GitHub
-                    </motion.a>
+                    {project.links.github && (
+                      <motion.a
+                        href={project.links.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-glass"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <FiGithub /> GitHub
+                      </motion.a>
+                    )}
                     {project.links.appStore && (
                       <motion.a
                         href={project.links.appStore}
@@ -174,7 +231,8 @@ const Projects = () => {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >
-                      {project.links.demo.includes('play.google.com') ? <SiGoogleplay /> : <FiExternalLink />}{' '}
+                      {project.links.demo.includes('play.google.com') ? <SiGoogleplay />
+                        : project.links.demo.includes('youtube.com') ? <SiYoutube /> : <FiExternalLink />}{' '}
                       {project.links.demoLabel || 'View Project'}
                     </motion.a>
                   </div>
